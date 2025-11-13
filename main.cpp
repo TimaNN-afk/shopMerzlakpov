@@ -2,6 +2,7 @@
 #include <String>
 #include <Windows.h>
 #include <limits>
+#include <iomanip>
 
 size_t userSize = 2;
 
@@ -12,7 +13,7 @@ std::string* statusArr = new std::string[userSize]{ userStatus[0], userStatus[2]
 std::string currentStatus{};
 
 //Cклад
-size_t stotangeSize = 0;
+size_t storageSize = 0;
 unsigned int* idArr = nullptr;
 std::string* nameArr = nullptr;
 unsigned int* countArr = nullptr;
@@ -20,8 +21,10 @@ double* priceArr = nullptr;
 bool isStorageCreated = false;
 
 void CreateStorage();
+template<typename ArrType>
+void FillArray(ArrType* dinamicArray, ArrType* staticArray, size_t arraySize);
 
-
+void ShowStorage();
 
 
 void Start();
@@ -45,6 +48,14 @@ int main() // Магазин видеокарт
 	}
 	return 0;
 }
+void ShowStorage()
+{
+	std::cout << "ID\t" << std::left << std::setw(25) << "Название товара\t\t" << "Кол-во\t" << "Цена\n";
+	for (int i = 0; i < storageSize; i++)
+	{
+		std::cout << idArr[i] << "\t" << std::left << std::setw(25) << nameArr[i] << "\t" << countArr[i] << "\t" << priceArr[i] << "\n";
+	}
+}
 void CreateStorage()
 {
 	const int staticSize = 10;
@@ -61,28 +72,58 @@ void CreateStorage()
 	unsigned int count[staticSize]{3, 4, 2, 1, 10, 2, 3, 5, 6, 4};
 	double price[staticSize]{ 25999.99, 44999.99, 144999.99, 699999.99, 19999.99, 999999.99, 59999.99, 114999.999, 28999.99, 117999.99};
 
-	stotangeSize = staticSize;
-	idArr = new unsigned int[stotangeSize];
-	countArr = new unsigned int[stotangeSize];
-	nameArr = new std::string[stotangeSize];
+	storageSize = staticSize;
+	idArr = new unsigned int[storageSize];
+	countArr = new unsigned int[storageSize];
+	nameArr = new std::string[storageSize];
+	priceArr = new double[storageSize];
+
 	isStorageCreated = true;
+
+	FillArray(idArr, id, storageSize);
+	FillArray(nameArr, name, storageSize);
+	FillArray(countArr, count, storageSize);
+	FillArray(priceArr, price, storageSize);
 }
 
 void Start() 
 {
+	std::string choose;
 	std::cout << "\n\n\n\t\t\t3dMaps\n\n\n";
 	if (Login())
 	{
 		if (currentStatus == userStatus[0])
 		{
+			while (true)
+			{
+				std::cout << "Выберите склад\n1- Готовый склад\n2 - Создать новый\nВвод: ";
+				GetLine(choose);
+				if (choose == "1")
+				{
+					CreateStorage();
+					ShowStorage();
+					system("pause");
+				}
+				else if (choose == "2")
+				{
+					// создать новый склад
+				}
+				else
+				{
+					Err();
+				}
+			}
+			CreateStorage();
 			// Открытие + создание склада
 		}
 		else if (currentStatus == userStatus[1])
 		{
+			CreateStorage();
 			// Открытие + создание склада
 		}
 		else if (currentStatus == userStatus[2])
 		{
+			CreateStorage();
 			// Открытие + создание склада
 		}
 	}
@@ -132,4 +173,13 @@ inline void Err(int time)
 	std::cout << "Некоректный ввод" << std::endl << std::endl;
 	Sleep(time);
 	system("cls");
+}
+
+template<typename ArrType>
+void FillArray(ArrType* dinamicArray, ArrType* staticArray, size_t arraySize)
+{
+	for (int i = 0; i < arraySize; i++)
+	{
+		dinamicArray[i] = staticArray[i];
+	}
 }
