@@ -23,10 +23,8 @@ bool isStorageCreated = false;
 void CreateStorage();
 template<typename ArrType>
 void FillArray(ArrType* dinamicArray, ArrType* staticArray, size_t arraySize);
-void AddStorageItem();
-bool IsNumber(const std::string& str);
 
-void ShowStorage(int mode = 0);
+void ShowStorage();
 
 
 void Start();
@@ -51,34 +49,12 @@ int main() // Магазин видеокарт
 	}
 	return 0;
 }
-void ShowStorage(int mode)
+void ShowStorage()
 {
-	if (mode == 0)
+	std::cout << "ID\t" << std::left << std::setw(60) << "Название товара\t\t" << "Кол-во\t" << "Цена\n";
+	for (int i = 0; i < storageSize; i++)
 	{
-		system("cls");
-		std::cout << "ID\t" << std::left << std::setw(60) << "Название товара\t\t" << "Кол-во\t" << "Цена\n";
-		for (int i = 0; i < storageSize; i++)
-		{
-			std::cout << idArr[i] << "\t" << std::left << std::setw(60) << nameArr[i] << "\t" << countArr[i] << "\t" << priceArr[i] << std::endl;
-		}
-		system("pause");
-		system("сls");
-	}
-	else if (mode == 1)
-	{
-		std::cout << "ID\t" << std::left << std::setw(60) << "Название товара\t\t" << "Кол-во" << std::endl;
-		for (int i = 0; i < storageSize; i++)
-		{
-			std::cout << idArr[i] << "\t" << std::left << std::setw(60) << nameArr[i] << "\t" << countArr[i] << std::endl;
-		}
-	}
-	else if (mode == 2)
-	{
-		std::cout << "ID\t" << std::left << std::setw(60) << "Название товара\t\t" << "Цена\n";
-		for (int i = 0; i < storageSize; i++)
-		{
-			std::cout << idArr[i] << "\t" << std::left << std::setw(60) << nameArr[i] << "\t" << priceArr[i] << std::endl;
-		}
+		std::cout << idArr[i] << "\t" << std::left << std::setw(60) << nameArr[i] << "\t" << countArr[i] << "\t" << priceArr[i] << "\n";
 	}
 }
 void CreateStorage()
@@ -125,9 +101,7 @@ void Start()
 				GetLine(choose);
 				if (choose == "1")
 				{
-					system("cls");
 					CreateStorage();
-					SnowSuperAdminMenu();
 
 				}
 				else if (choose == "2")
@@ -179,7 +153,6 @@ bool Login()
 		{
 			if (login == loginArr[i] && pass == passArr[i])
 			{
-				system("cls");
 				std::cout << "Пользователь: " << loginArr[i] << "\n\nДобро пожаловать!\n\n";
 				std::cout << "Ваш статус: " << statusArr[i] << "\n\n";
 				currentStatus = statusArr[i];
@@ -269,47 +242,4 @@ void SnowSuperAdminMenu()
 			Err();
 		}
 	}
-}
-
-void AddStorageItem()
-{
-	std::string chooseId, chooseCount, choose;
-	unsigned int id = 0, count = 0;
-	while (true)
-	{
-		system("cls");
-		ShowStorage(1);
-		std::cout << "Введите ID товара или \"exit\" для выхода: ";
-		GetLine(chooseId);
-		if (chooseId == "exit")
-		{
-			std::cout << "Отмена операция пополнения товара!" << std::endl;
-			Sleep(1500);
-			break;
-		}
-		std::cout << "Введите кол-во товара для пополнения: ";
-		GetLine(chooseCount);
-
-		
-	}
-}
-
-bool IsNumber(const std::string& str)
-{
-	if (str.size() <= 0 || str.size() >= 10)
-	{
-		std::cout << "Ошибка длины числа. Максимум девятизначные числа!\n\n";
-		Sleep(1500);
-		return false();
-	}
-	for (int i = 0; i < str.size(); i++)
-	{
-		if (!std::isdigit(str[i]))
-		{
-			std::cout << "Введенные данные не являются числом!\n\n";
-			Sleep(1500);
-			return false;
-		}
-	}
-	return true;
 }
