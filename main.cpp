@@ -131,5 +131,5 @@ inline void Err(int time)
 {
 	std::cout << "Некоректный ввод" << std::endl << std::endl;
 	Sleep(time);
-	system("cls");
+	system("cls");;
 }
