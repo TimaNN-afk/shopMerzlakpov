@@ -11,7 +11,7 @@ std::string userStatus[3]{ "Супер администратор",  "Администратор", "Сотрудник" 
 std::string* loginArr = new std::string[userSize]{ "sup", "ad", "us" };
 std::string* passArr = new std::string[userSize]{ "1", "1", "1" };
 std::string* statusArr = new std::string[userSize]{ userStatus[0], userStatus[1], userStatus[2] };
-long double  * bonusArr = new  long double  [userSize] {0.0, 0.0, 0.0};
+long double  * bonusArr = new long double  [userSize] {0.0, 0.0, 0.0};
 unsigned int* userIdArr = new unsigned int[userSize] {1, 2, 3};
 unsigned int currentId = 0;
 std::string currentStatus;
@@ -22,9 +22,6 @@ void ShowUsers(int mode = 0);
 void AddNewUser();
 void ChangePass();
 void DeleteUser();
-
-
-//-----------------------------------------------------------------------------------------
 
 //------------------------------------- Склад ---------------------------------------------
 size_t storageSize = 0;
@@ -52,7 +49,6 @@ void StorageReturner();
 
 template<typename ArrType>
 void FillArray(ArrType* dinamicArray, ArrType* staticArray, size_t arraySize);
-//-----------------------------------------------------------------------------------------
 
 //------------------------------------- Продажи -------------------------------------------
 size_t checkSize = 0;
@@ -69,8 +65,6 @@ long double cash = 990000;
 void Selling();
 void CheckArrAppend();
 void PrintCheck(long double  & totalSum);
-
-//-----------------------------------------------------------------------------------------
 
 //------------------------------------- Служебные -----------------------------------------
 std::unordered_set<char> loginSymbols;
@@ -90,7 +84,6 @@ void SnowSuperAdminMenu();
 bool IsNumber(const std::string& str);
 inline void GetLine (std::string& str);
 inline void Err(int time = 1500);
-//-----------------------------------------------------------------------------------------
 
 int main() // Магазин видеокарт
 {
