@@ -1817,12 +1817,12 @@ void PrintCheck(long double& totalSum)
 	}
 	else if (Discount1(totalSum))
 	{
-		totalSum *= (1 - 0.5);
+		totalSum *= (1 - 0.05);
 		std::cout << "\nСо скидкой 5%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
 	}
 	else if (Discount2())
 	{
-		totalSum *= (1 - 0.7);
+		totalSum *= (1 - 0.07);
 		std::cout << "\nСо скидкой 7%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
 	}
 	else
