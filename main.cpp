@@ -67,7 +67,7 @@ void CheckArrAppend();
 void PrintCheck(long double  & totalSum);
 
 bool Discount1(long double& totalSum);
-bool Discount2();
+bool Discount2(std::string* arr, int size);
 
 //------------------------------------- Служебные -----------------------------------------
 std::unordered_set<char> loginSymbols;
@@ -1810,7 +1810,7 @@ void PrintCheck(long double& totalSum)
 			<< "\t\t"  << priceArrCheck[i] << "\t\t" << countArrCheck[i] << "\t" << totalPriceArrCheck[i] << "\n";
 	}
 	std::cout << "\nИтого к оплате: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
-	if (Discount1(totalSum) && Discount2())
+	if (Discount1(totalSum) && Discount2(nameArr, checkSize))
 	{
 		totalSum *= (1 - 0.13);
 		std::cout << "\nСо скидкой 13%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
@@ -1820,7 +1820,7 @@ void PrintCheck(long double& totalSum)
 		totalSum *= (1 - 0.05);
 		std::cout << "\nСо скидкой 5%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
 	}
-	else if (Discount2())
+	else if (Discount2(nameArr, checkSize))
 	{
 		totalSum *= (1 - 0.07);
 		std::cout << "\nСо скидкой 7%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
@@ -1910,4 +1910,14 @@ bool Discount2()
 	{
 		return false;
 	}
+}
+bool Discount2(std::string* arr, int size)
+{
+	for (int i = 0; i < size; i++) {
+		if (arr[i] == "AmdAsusPrime RTX 5060 ti MegaSuper - 24 gb") 
+		{
+			return true;
+		}
+	}
+	return false;
 }
