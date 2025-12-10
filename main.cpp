@@ -67,7 +67,7 @@ void CheckArrAppend();
 void PrintCheck(long double  & totalSum);
 
 bool Discount1(long double& totalSum);
-bool Discount2(long double& totalSum);
+bool Discount2();
 
 //------------------------------------- Служебные -----------------------------------------
 std::unordered_set<char> loginSymbols;
