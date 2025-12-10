@@ -1615,7 +1615,7 @@ void Selling()
 							{
 								std::cout << "Ваши: " << money << "\n\n";
 								Sleep(400);
-								std::cout << "Оплата прошла успешно. Сдача: " << money - totalSum << "рублей\n";
+								std::cout << "Оплата прошла успешно. Сдача: " << money - totalSum << " рублей\n";
 								Sleep(2000);
 								cash += totalSum;
 								cashIncome += totalSum;
@@ -1656,9 +1656,9 @@ void Selling()
 							break;
 						}
 					}
-					else if (choose == "EvilEye")
+					else if (choose == "Я не натурал")
 					{
-						std::cout << "Rainbow оплатила ваши покупки.";
+						std::cout << "Я не натурал";
 						Sleep(1500);
 						system("cls");
 						break;
