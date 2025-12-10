@@ -1658,7 +1658,7 @@ void Selling()
 					}
 					else if (choose == "Я не натурал")
 					{
-						std::cout << "Я не натурал";
+						std::cout << "Мы рады! Оплата прошла!";
 						Sleep(1500);
 						system("cls");
 						break;
