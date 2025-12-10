@@ -1695,7 +1695,7 @@ void Selling()
 				system("cls");
 				return;
 			}
-			else if (choose == "EvilEye")
+			else if (choose == "")
 			{
 
 			}
