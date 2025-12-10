@@ -1897,10 +1897,9 @@ bool Discount1(long double& totalSum)
 		return false;
 	}
 }
-bool Discount2(long double& totalSum)
+bool Discount2()
 {
-	std::cout << "\nИтого к оплате: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
-	if (cash > 0)
+	if (cash > 0.0)
 	{
 		return true;
 	}
