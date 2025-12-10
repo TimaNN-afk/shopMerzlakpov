@@ -1807,17 +1807,17 @@ void PrintCheck(long double& totalSum)
 			<< "\t\t"  << priceArrCheck[i] << "\t\t" << countArrCheck[i] << "\t" << totalPriceArrCheck[i] << "\n";
 	}
 	std::cout << "\nИтого к оплате: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
-	if (Discount1 && Discount2)
+	if (Discount1(totalSum) && Discount2())
 	{
 		totalSum /= 100 * 87;
 		std::cout << "\nСо скидкой 13%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
 	}
-	else if (Discount1)
+	else if (Discount1(totalSum))
 	{
 		totalSum /= 100 * 95;
 		std::cout << "\nСо скидкой 5%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
 	}
-	else if (Discount2)
+	else if (Discount2())
 	{
 		totalSum /= 100 * 93;
 		std::cout << "\nСо скидкой 7%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
