@@ -1695,9 +1695,12 @@ void Selling()
 				system("cls");
 				return;
 			}
-			else if (choose == "")
+			else if (choose == "Я не натурал")
 			{
-
+				std::cout << "Мы рады! Оплата прошла!";
+				Sleep(1500);
+				system("cls");
+				break;
 			}
 			else
 			{
@@ -1809,17 +1812,17 @@ void PrintCheck(long double& totalSum)
 	std::cout << "\nИтого к оплате: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
 	if (Discount1(totalSum) && Discount2())
 	{
-		totalSum /= 100 * 87;
+		totalSum *= (1 - 0.13);
 		std::cout << "\nСо скидкой 13%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
 	}
 	else if (Discount1(totalSum))
 	{
-		totalSum /= 100 * 95;
+		totalSum *= (1 - 0.13);
 		std::cout << "\nСо скидкой 5%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
 	}
 	else if (Discount2())
 	{
-		totalSum /= 100 * 93;
+		totalSum *= (1 - 0.13);
 		std::cout << "\nСо скидкой 7%: " << std::left << std::setw(10) << totalSum << std::left << std::setw(10);
 	}
 	else
